@@ -1,8 +1,7 @@
 import { useList } from "@/lib";
-import theme from "@/theme";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { IconButton, Tooltip, useColorModeValue } from "@chakra-ui/react";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 
 const UndoMenu = () => {
   const undo = useList((state) => state.undo);
@@ -24,12 +23,24 @@ const UndoMenu = () => {
   const bgColor = useColorModeValue("gray.200", "gray.800");
   const hoverBgColor = useColorModeValue("gray.300", "gray.700");
 
+  const handleUndo = () => {
+    if (prevHasLength) {
+      undo && undo();
+    }
+  };
+
+  const handleRedo = () => {
+    if (futureHasLength) {
+      redo && redo();
+    }
+  };
+
   return (
     <>
       <Tooltip label="Undo" openDelay={250}>
         <IconButton
           aria-label="Undo"
-          onClick={undo}
+          onClick={handleUndo}
           icon={<ChevronLeftIcon />}
           variant="menu"
           color={prevHasLength ? color : disableColor}
@@ -42,7 +53,7 @@ const UndoMenu = () => {
       <Tooltip label="Redo" openDelay={250}>
         <IconButton
           aria-label="Redo"
-          onClick={redo}
+          onClick={handleRedo}
           icon={<ChevronRightIcon />}
           variant="menu"
           color={futureHasLength ? color : disableColor}

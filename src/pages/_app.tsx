@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Inbox App</title>
-        <link rel="icon" href="/InboxIcon.svg" />
+        <link rel="icon" href="/icons/InboxIcon.svg" />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"

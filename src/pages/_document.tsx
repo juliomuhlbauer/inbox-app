@@ -37,9 +37,13 @@ class MyDocument extends Document {
             content="#171923"
             media="(prefers-color-scheme: dark)"
           />
-          <link rel="apple-touch-icon" sizes="512x512" href="/InboxIcon.png" />
+          <link
+            rel="apple-touch-icon"
+            sizes="512x512"
+            href="/icons/InboxIcon.png"
+          />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="shortcut icon" href="/InboxIcon.svg" />
+          <link rel="shortcut icon" href="/icons/InboxIcon.svg" />
         </Head>
         <body>
           <Main />

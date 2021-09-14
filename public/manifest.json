@@ -3,7 +3,7 @@
   "short_name": "Inbox",
   "icons": [
     {
-      "src": "/InboxIcon.png",
+      "src": "/icons/InboxIconFilled.png",
       "sizes": "512x512",
       "type": "image/png"
     }
