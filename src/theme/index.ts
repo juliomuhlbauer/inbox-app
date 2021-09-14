@@ -14,7 +14,7 @@ const fonts = {
 
 const colors = {
   bg: base.colors.gray,
-  color: base.colors.red,
+  color: base.colors.cyan,
 };
 
 const theme = extendTheme({
@@ -27,7 +27,7 @@ const theme = extendTheme({
       baseStyle: {
         _focus: {
           ring: 2,
-          ringColor: base.colors.cyan[500],
+          ringColor: "color.500",
         },
       },
     },
