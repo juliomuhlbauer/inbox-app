@@ -1,0 +1,16 @@
+{
+  "name": "Inbox",
+  "short_name": "Inbox",
+  "icons": [
+    {
+      "src": "/InboxIcon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#171923",
+  "background_color": "#171923",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
