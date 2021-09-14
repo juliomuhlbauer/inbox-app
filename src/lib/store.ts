@@ -1,9 +1,10 @@
 import { ListProps } from "@/types";
 import produce, { Draft } from "immer";
+import { undoMiddleware, UndoState } from "zundo";
 import create, { State, StateCreator } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface ListStore {
+interface ListStore extends UndoState {
   list: ListProps[];
   addItem: (title: string) => void;
   deleteItem: (id: string) => void;
@@ -26,24 +27,26 @@ const immer =
 
 export const useList = create<ListStore>(
   persist(
-    immer((set) => ({
-      list: [],
-      addItem: (title) => {
-        set((state) => {
-          state.list.push({
-            id: Math.random().toString(),
-            title,
+    undoMiddleware(
+      immer((set) => ({
+        list: [],
+        addItem: (title) => {
+          set((state) => {
+            state.list.push({
+              id: Math.random().toString(),
+              title,
+            });
           });
-        });
-      },
-      deleteItem: (id) =>
-        set((state) => {
-          state.list.splice(
-            state.list.findIndex((item) => item.id === id),
-            1
-          );
-        }),
-    })),
+        },
+        deleteItem: (id) =>
+          set((state) => {
+            state.list.splice(
+              state.list.findIndex((item) => item.id === id),
+              1
+            );
+          }),
+      }))
+    ),
     {
       name: "inbox-list",
     }

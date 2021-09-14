@@ -1,7 +1,7 @@
 import { useList } from "@/lib";
 import { ListProps } from "@/types";
 import { CloseIcon } from "@chakra-ui/icons";
-import { Flex, Heading, IconButton, Spacer, Stack } from "@chakra-ui/react";
+import { Flex, Heading, IconButton, Spacer } from "@chakra-ui/react";
 import { FC, memo } from "react";
 
 interface ListItemProps {
@@ -28,7 +28,7 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
         aria-label="Delete item"
         icon={<CloseIcon />}
         onClick={() => deleteItem(item.id)}
-        variant="ghost"
+        variant="action"
       />
     </Flex>
   );

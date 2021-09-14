@@ -14,8 +14,9 @@ const InputComponent = () => {
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <InputGroup my={2}>
+    <InputGroup>
       <Input
+        size="lg"
         placeholder="Add an item"
         focusBorderColor="cyan.500"
         variant="flushed"
@@ -31,7 +32,7 @@ const InputComponent = () => {
       />
       <InputRightElement>
         <IconButton
-          variant="ghost"
+          variant="action"
           icon={<AddIcon />}
           aria-label="Add an item"
           onClick={() => {

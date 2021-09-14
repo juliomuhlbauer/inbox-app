@@ -7,7 +7,7 @@ const InboxList: FC = () => {
   const list = useList((state) => state.list);
 
   return (
-    <Stack spacing={4} my={4}>
+    <Stack spacing={4}>
       {list.map((item) => (
         <ListItem key={item.id} item={item} />
       ))}

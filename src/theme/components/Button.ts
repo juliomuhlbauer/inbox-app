@@ -1,20 +1,26 @@
 import { ComponentSingleStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
+import { ringStyle } from "../styles";
 
 const Button: ComponentSingleStyleConfig = {
   baseStyle: {
-    _focus: {
-      ring: 2,
-      ringColor: "color.500",
-    },
+    ...ringStyle,
   },
   variants: {
     float: (props) => ({
       color: mode("gray.600", "gray.500")(props),
       bgColor: mode("gray.200", "gray.800")(props),
     }),
-    ghost: (props) => ({
+    action: (props) => ({
       color: mode("gray.600", "gray.500")(props),
+      _hover: { bgColor: mode("gray.400", "gray.800")(props) },
+      _active: { bgColor: mode("gray.500", "gray.900")(props) },
+    }),
+    menu: (props) => ({
+      color: mode("gray.800", "gray.300")(props),
+      bgColor: mode("gray.200", "gray.800")(props),
+      _hover: { bgColor: mode("gray.300", "gray.700")(props) },
+      _active: { bgColor: mode("gray.300", "gray.700")(props) },
     }),
   },
 };
