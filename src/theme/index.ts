@@ -27,7 +27,7 @@ const theme = extendTheme({
       baseStyle: {
         _focus: {
           ring: 2,
-          ringColor: base.colors.purple[500],
+          ringColor: base.colors.cyan[500],
         },
       },
     },
