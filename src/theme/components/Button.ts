@@ -10,17 +10,16 @@ const Button: ComponentSingleStyleConfig = {
     float: (props) => ({
       color: mode("gray.600", "gray.500")(props),
       bgColor: mode("gray.200", "gray.800")(props),
+      _hover: { bgColor: mode("gray.300", "gray.700")(props) },
     }),
     action: (props) => ({
       color: mode("gray.600", "gray.500")(props),
-      _hover: { bgColor: mode("gray.400", "gray.800")(props) },
-      _active: { bgColor: mode("gray.500", "gray.900")(props) },
+      _hover: { bgColor: mode("gray.200", "gray.800")(props) },
     }),
     menu: (props) => ({
       color: mode("gray.800", "gray.300")(props),
       bgColor: mode("gray.200", "gray.800")(props),
       _hover: { bgColor: mode("gray.300", "gray.700")(props) },
-      _active: { bgColor: mode("gray.300", "gray.700")(props) },
     }),
   },
 };
