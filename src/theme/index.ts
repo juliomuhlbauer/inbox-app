@@ -1,5 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
 import { theme as base, ThemeConfig } from "@chakra-ui/theme";
+import components from "./components";
 import { globalStyles } from "./styles";
 
 const config: ThemeConfig = {
@@ -21,17 +22,8 @@ const theme = extendTheme({
   config,
   fonts,
   colors,
+  components,
   styles: globalStyles,
-  components: {
-    Button: {
-      baseStyle: {
-        _focus: {
-          ring: 2,
-          ringColor: "color.500",
-        },
-      },
-    },
-  },
 });
 
 export default theme;
