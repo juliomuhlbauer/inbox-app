@@ -22,7 +22,7 @@ const InboxLayout = () => {
     <Box w="100%" h="100%" overflow="auto">
       <Container maxW="container.md" py={4}>
         <Stack spacing={6}>
-          <HStack>
+          <HStack align="center">
             <Heading>Inbox</Heading>
             <Spacer />
             <UndoMenu />
