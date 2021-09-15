@@ -23,7 +23,7 @@ class MyDocument extends Document {
             name="apple-mobile-web-app-status-bar-style"
             content="default"
           />
-          <meta name="apple-mobile-web-app-title" content="Inbox App" />
+          <meta name="apple-mobile-web-app-title" content="Inbox" />
           <meta name="description" content="This is a inbox app" />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
