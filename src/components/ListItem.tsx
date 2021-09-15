@@ -17,20 +17,20 @@ interface ListItemProps {
 const ListItem: FC<ListItemProps> = ({ item }) => {
   const deleteItem = useList((state) => state.deleteItem);
 
-  const bgColor = useColorModeValue("gray.200", "gray.800");
-  const hoverBgColor = useColorModeValue("gray.300", "gray.700");
+  const hoverBgColor = useColorModeValue("gray.200", "gray.800");
 
   return (
     <Flex
       align="center"
       key={item.id}
-      bgColor={bgColor}
       p={2}
       borderRadius="md"
-      _hover={{ bgColor: hoverBgColor }}
       cursor="pointer"
+      _hover={{ bgColor: hoverBgColor }}
     >
-      <Heading fontSize="2xl">{item.title}</Heading>
+      <Heading size="md" fontWeight="semibold">
+        {item.title}
+      </Heading>
       <Spacer />
       <IconButton
         size="sm"
