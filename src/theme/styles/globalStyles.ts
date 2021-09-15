@@ -42,8 +42,8 @@ export const globalStyles: Styles = {
 const scrollbar: SystemStyleFunction = (props) => ({
   "@media (pointer: fine)": {
     "::-webkit-scrollbar": {
-      width: "6px",
-      height: "6px ",
+      width: "5px",
+      height: "5px ",
     },
     "::-webkit-scrollbar-thumb": {
       borderRadius: "5px",
