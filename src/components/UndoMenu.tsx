@@ -42,7 +42,7 @@ const UndoMenu = () => {
 
   return (
     <HStack>
-      <Tooltip label="Undo" openDelay={250}>
+      <Tooltip label="Undo (Ctrl+Z)" openDelay={250}>
         <IconButton
           aria-label="Undo"
           onClick={handleUndo}
@@ -55,7 +55,7 @@ const UndoMenu = () => {
           }}
         />
       </Tooltip>
-      <Tooltip label="Redo" openDelay={250}>
+      <Tooltip label="Redo (Ctrl+Y)" openDelay={250}>
         <IconButton
           aria-label="Redo"
           onClick={handleRedo}

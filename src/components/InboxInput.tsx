@@ -1,3 +1,4 @@
+import { useMedia } from "@/hooks";
 import { useList } from "@/lib";
 import { AddIcon } from "@chakra-ui/icons";
 import {
@@ -5,17 +6,26 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Tooltip,
 } from "@chakra-ui/react";
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 const InputComponent = () => {
   const addItem = useList((state) => state.addItem);
 
+  const { isDesktop } = useMedia();
+
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    isDesktop && document.getElementById("input")?.focus();
+  });
 
   return (
     <InputGroup>
       <Input
+        autoComplete="off"
+        id="input"
         _placeholder={{
           textColor: "gray.600",
         }}
@@ -35,15 +45,17 @@ const InputComponent = () => {
         }}
       />
       <InputRightElement>
-        <IconButton
-          variant="action"
-          icon={<AddIcon />}
-          aria-label="Add an item"
-          onClick={() => {
-            addItem(inputValue);
-            setInputValue("");
-          }}
-        />
+        <Tooltip label="Add (Enter)" openDelay={250}>
+          <IconButton
+            variant="action"
+            icon={<AddIcon />}
+            aria-label="Add an item"
+            onClick={() => {
+              addItem(inputValue);
+              setInputValue("");
+            }}
+          />
+        </Tooltip>
       </InputRightElement>
     </InputGroup>
   );
