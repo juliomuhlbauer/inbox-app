@@ -16,6 +16,10 @@ const InputComponent = () => {
   return (
     <InputGroup>
       <Input
+        _placeholder={{
+          textColor: "gray.600",
+        }}
+        borderColor="gray.600"
         size="lg"
         placeholder="Add an item"
         focusBorderColor="cyan.500"

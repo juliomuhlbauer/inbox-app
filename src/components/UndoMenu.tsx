@@ -1,6 +1,11 @@
 import { useList } from "@/lib";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { IconButton, Tooltip, useColorModeValue } from "@chakra-ui/react";
+import {
+  HStack,
+  IconButton,
+  Tooltip,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { memo } from "react";
 
 const UndoMenu = () => {
@@ -36,7 +41,7 @@ const UndoMenu = () => {
   };
 
   return (
-    <>
+    <HStack>
       <Tooltip label="Undo" openDelay={250}>
         <IconButton
           aria-label="Undo"
@@ -63,7 +68,7 @@ const UndoMenu = () => {
           }}
         />
       </Tooltip>
-    </>
+    </HStack>
   );
 };
 
