@@ -9,8 +9,8 @@ const config: ThemeConfig = {
 };
 
 const fonts = {
-  heading: "Inter, sans-serif",
-  body: "Inter, sans-serif",
+  heading: `Inter, ${base.fonts.heading}`,
+  body: `Inter, ${base.fonts.body}`,
 };
 
 const colors = {
