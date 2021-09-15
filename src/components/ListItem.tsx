@@ -42,9 +42,6 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
         exit={{
           opacity: 0,
           y: -50,
-          transition: {
-            duration: 0.1,
-          },
         }}
         transition={{
           type: "spring",
@@ -57,6 +54,7 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
           align="center"
           key={item.id}
           p={2}
+          my={2}
           borderRadius="md"
           cursor="pointer"
           _hover={{ bgColor: hoverBgColor }}
