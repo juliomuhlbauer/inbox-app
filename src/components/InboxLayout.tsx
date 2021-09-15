@@ -40,24 +40,19 @@ const InboxLayout = () => {
           w="100%"
           h="100%"
           overflow="auto"
-          sx={
-            isDesktop
-              ? {
-                  maskImage:
-                    "linear-gradient(to top, transparent, black), linear-gradient(to left, transparent 4px, black 4px)",
-                  maskSize: "100% 20000px",
-                  maskPosition: "left bottom",
-                  transition: "mask-position 0.2s, -webkit-mask-position 0.2s",
-                  WebkitMaskImage:
-                    "linear-gradient(to top, transparent, black), linear-gradient(to left, transparent 4px, black 4px)",
-                  WebkitMaskSize: "100% 20000px",
-                  WebkitMaskPosition: "left bottom",
-                  _hover: {
-                    WebkitMaskPosition: "left top",
-                  },
-                }
-              : {}
-          }
+          sx={{
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "inherit",
+            },
+            _hover: {
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "gray.700",
+              },
+              "&::-webkit-scrollbar-thumb:hover": {
+                background: "color.400",
+              },
+            },
+          }}
         >
           <Container w="100%" h="100%" maxW="container.md">
             <InboxList />
