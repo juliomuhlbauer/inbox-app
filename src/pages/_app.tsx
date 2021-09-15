@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Inbox App</title>
+        <title>Inbox</title>
         <link rel="icon" href="/icons/InboxIcon.svg" />
         <meta
           name="viewport"
