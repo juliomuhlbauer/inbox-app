@@ -1,10 +1,8 @@
-import { useMedia } from "@/hooks";
+import { useMedia, useShortcuts } from "@/hooks";
 import { Box, Container, Flex, Heading, Stack } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import InboxInput from "./InboxInput";
 import UndoMenu from "./UndoMenu";
-import { useHotkeys } from "react-hotkeys-hook";
-import { useList } from "@/lib";
 
 const InboxList = dynamic(() => import("@/components/InboxList"), {
   ssr: false,
@@ -21,26 +19,8 @@ const Nav = () => {
 
 const InboxLayout = () => {
   const { isDesktop } = useMedia();
-  const undo = useList((state) => state.undo);
-  const redo = useList((state) => state.redo);
 
-  useHotkeys("n,alt+n", (e) => {
-    e.preventDefault();
-
-    document.getElementById("input")?.focus();
-  });
-
-  useHotkeys("ctrl+z", (e) => {
-    e.preventDefault();
-
-    undo && undo();
-  });
-
-  useHotkeys("ctrl+y", (e) => {
-    e.preventDefault();
-
-    redo && redo();
-  });
+  useShortcuts();
 
   return (
     <Box w="100%" h="100%" pt={4}>

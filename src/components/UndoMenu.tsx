@@ -1,4 +1,4 @@
-import { useList } from "@/lib";
+import { useActions } from "@/hooks";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import {
   HStack,
@@ -9,36 +9,13 @@ import {
 import { memo } from "react";
 
 const UndoMenu = () => {
-  const undo = useList((state) => state.undo);
-  const redo = useList((state) => state.redo);
-
-  const { getState } = useList();
-
-  const prevHasLength: Boolean = getState
-    ? getState().prevStates.length > 0
-    : false;
-
-  const futureHasLength: Boolean = getState
-    ? getState().futureStates.length > 0
-    : false;
+  const { handleRedo, handleUndo, canUndo, canRedo } = useActions();
 
   const color = useColorModeValue("gray.800", "gray.300");
-  const disableColor = useColorModeValue("gray.500", "gray.500");
+  const disableColor = useColorModeValue("gray.500", "gray.600");
 
   const bgColor = useColorModeValue("gray.200", "gray.800");
   const hoverBgColor = useColorModeValue("gray.300", "gray.700");
-
-  const handleUndo = () => {
-    if (prevHasLength) {
-      undo && undo();
-    }
-  };
-
-  const handleRedo = () => {
-    if (futureHasLength) {
-      redo && redo();
-    }
-  };
 
   return (
     <HStack>
@@ -48,10 +25,10 @@ const UndoMenu = () => {
           onClick={handleUndo}
           icon={<ChevronLeftIcon />}
           variant="menu"
-          color={prevHasLength ? color : disableColor}
-          cursor={prevHasLength ? "pointer" : "default"}
+          color={canUndo ? color : disableColor}
+          cursor={canUndo ? "pointer" : "default"}
           _hover={{
-            bgColor: prevHasLength ? hoverBgColor : bgColor,
+            bgColor: canUndo ? hoverBgColor : bgColor,
           }}
         />
       </Tooltip>
@@ -61,10 +38,10 @@ const UndoMenu = () => {
           onClick={handleRedo}
           icon={<ChevronRightIcon />}
           variant="menu"
-          color={futureHasLength ? color : disableColor}
-          cursor={futureHasLength ? "pointer" : "default"}
+          color={canRedo ? color : disableColor}
+          cursor={canRedo ? "pointer" : "default"}
           _hover={{
-            bgColor: futureHasLength ? hoverBgColor : bgColor,
+            bgColor: canRedo ? hoverBgColor : bgColor,
           }}
         />
       </Tooltip>
