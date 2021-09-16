@@ -41,6 +41,8 @@ const InputComponent = () => {
           if (e.key === "Enter") {
             addItem(target.value);
             setInputValue("");
+          } else if (e.key === "Escape") {
+            target.blur();
           }
         }}
       />
