@@ -2,28 +2,23 @@ import { useMedia, useShortcuts } from "@/hooks";
 import { Box, Container, Flex, Heading, Stack } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import InboxInput from "./InboxInput";
-import UndoMenu from "./UndoMenu";
+import Nav from "./Nav";
 
 const InboxList = dynamic(() => import("@/components/InboxList"), {
   ssr: false,
 });
 
-const Nav = () => {
-  return (
-    <Flex justify="space-between">
-      <Heading as="h1">Inbox</Heading>
-      <UndoMenu />
-    </Flex>
-  );
+const Shortcuts = () => {
+  useShortcuts();
+  return <div></div>;
 };
 
 const InboxLayout = () => {
   const { isDesktop } = useMedia();
 
-  useShortcuts();
-
   return (
     <Box w="100%" h="100%" pt={4}>
+      <Shortcuts />
       <Stack w="100%" h="100%" spacing={4} align="center">
         <Container maxW="container.md">
           <Nav />
