@@ -19,15 +19,13 @@ const InputComponent = () => {
 
   const addHandler = () => {
     const value = inputRef.current?.value;
-    if (value) {
-      addItem(value);
-      inputRef.current && (inputRef.current.value = "");
-    }
+    addItem(value || "");
+    inputRef.current && (inputRef.current.value = "");
   };
 
   useEffect(() => {
     isDesktop && inputRef.current?.focus();
-  });
+  }, [isDesktop]);
 
   return (
     <InputGroup>
