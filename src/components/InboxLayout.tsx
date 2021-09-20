@@ -1,5 +1,5 @@
 import { useMedia, useShortcuts } from "@/hooks";
-import { Box, Container, Flex, Heading, Stack } from "@chakra-ui/react";
+import { Box, Container, Stack } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import InboxInput from "./InboxInput";
 import Nav from "./Nav";

@@ -1,3 +1,4 @@
+import { useMedia } from "@/hooks";
 import { useList } from "@/lib";
 import { ListProps } from "@/types";
 import { CloseIcon } from "@chakra-ui/icons";
@@ -22,6 +23,8 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
   const hoverBgColor = useColorModeValue("gray.200", "gray.800");
 
   const isPresent = useIsPresent();
+
+  const { isDesktop } = useMedia();
 
   return (
     <Box position="relative">
@@ -51,13 +54,15 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
         }}
       >
         <Flex
+          minH={12}
           align="center"
           key={item.id}
-          p={2}
+          p={{ base: 1, md: 2 }}
           my={2}
           borderRadius="md"
           cursor="pointer"
           _hover={{ bgColor: hoverBgColor }}
+          role="group"
         >
           <Heading size="md" fontWeight="semibold">
             {item.title}
@@ -69,6 +74,10 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
             icon={<CloseIcon />}
             onClick={() => deleteItem(item.id)}
             variant="action"
+            display={isDesktop ? "none" : "block"}
+            _groupHover={{ display: "block" }}
+            position={isDesktop ? "absolute" : "static"}
+            right={1}
           />
         </Flex>
       </motion.div>
