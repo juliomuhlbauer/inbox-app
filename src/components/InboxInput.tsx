@@ -8,22 +8,31 @@ import {
   InputRightElement,
   Tooltip,
 } from "@chakra-ui/react";
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useRef } from "react";
 
 const InputComponent = () => {
   const addItem = useList((state) => state.addItem);
 
   const { isDesktop } = useMedia();
 
-  const [inputValue, setInputValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const addHandler = () => {
+    const value = inputRef.current?.value;
+    if (value) {
+      addItem(value);
+      inputRef.current && (inputRef.current.value = "");
+    }
+  };
 
   useEffect(() => {
-    isDesktop && document.getElementById("input")?.focus();
+    isDesktop && inputRef.current?.focus();
   });
 
   return (
     <InputGroup>
       <Input
+        ref={inputRef}
         autoComplete="off"
         id="input"
         _placeholder={{
@@ -34,13 +43,11 @@ const InputComponent = () => {
         placeholder="Add an item"
         focusBorderColor="cyan.500"
         variant="flushed"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={(e) => {
           const target = e.target as HTMLInputElement;
           if (e.key === "Enter") {
             addItem(target.value);
-            setInputValue("");
+            target.value = "";
           } else if (e.key === "Escape") {
             target.blur();
           }
@@ -52,10 +59,7 @@ const InputComponent = () => {
             variant="action"
             icon={<AddIcon />}
             aria-label="Add an item"
-            onClick={() => {
-              addItem(inputValue);
-              setInputValue("");
-            }}
+            onClick={addHandler}
           />
         </Tooltip>
       </InputRightElement>
