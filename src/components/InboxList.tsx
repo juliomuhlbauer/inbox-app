@@ -14,7 +14,9 @@ const InboxList: FC = () => {
       behavior: "smooth",
       block: "end",
     });
-    resetLastItemId();
+    if (lastItemId !== null) {
+      resetLastItemId();
+    }
   }, [lastItemId, resetLastItemId]);
 
   return (
