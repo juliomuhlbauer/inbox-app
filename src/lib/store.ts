@@ -6,8 +6,10 @@ import { persist } from "zustand/middleware";
 
 interface ListStore extends UndoState {
   list: ListProps[];
+  lastItemId: null | string;
   addItem: (title: string) => void;
   deleteItem: (id: string) => void;
+  resetLastItemId: () => void;
 }
 
 const immer =
@@ -30,12 +32,15 @@ export const useList = create<ListStore>(
     undoMiddleware(
       immer((set) => ({
         list: [],
+        lastItemId: null,
         addItem: (title) => {
+          const id = Math.random().toString();
           set((state) => {
             state.list.push({
-              id: Math.random().toString(),
+              id,
               title,
             });
+            state.lastItemId = id;
           });
         },
         deleteItem: (id) =>
@@ -44,6 +49,10 @@ export const useList = create<ListStore>(
               state.list.findIndex((item) => item.id === id),
               1
             );
+          }),
+        resetLastItemId: () =>
+          set((state) => {
+            state.lastItemId = null;
           }),
       }))
     ),

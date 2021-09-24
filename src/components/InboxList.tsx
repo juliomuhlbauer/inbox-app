@@ -1,11 +1,21 @@
 import { useList } from "@/lib";
 import { Flex } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 import ListItem from "./ListItem";
 
 const InboxList: FC = () => {
   const list = useList((state) => state.list);
+  const resetLastItemId = useList((state) => state.resetLastItemId);
+  const lastItemId = useList((state) => state.lastItemId);
+
+  useEffect(() => {
+    document.getElementById(`item-${lastItemId}`)?.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+    resetLastItemId();
+  }, [lastItemId, resetLastItemId]);
 
   return (
     <Flex pb={10} direction="column" position="relative">

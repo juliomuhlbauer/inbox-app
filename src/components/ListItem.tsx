@@ -11,7 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { motion, useIsPresent } from "framer-motion";
-import { FC, memo, useEffect, useRef } from "react";
+import { FC, memo } from "react";
 
 interface ListItemProps {
   item: ListProps;
@@ -26,19 +26,8 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
 
   const { isDesktop } = useMedia();
 
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  }, [item]);
-
   return (
-    <Box ref={ref} position="relative">
+    <Box id={`item-${item.id}`} position="relative">
       <motion.div
         layout
         style={{
@@ -84,7 +73,7 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
             aria-label="Delete item"
             icon={<CloseIcon />}
             onClick={() => deleteItem(item.id)}
-            variant="action"
+            variant="float"
             display={isDesktop ? "none" : "block"}
             _groupHover={{ display: "block" }}
             position={isDesktop ? "absolute" : "static"}
