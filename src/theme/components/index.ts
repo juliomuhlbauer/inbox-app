@@ -1,4 +1,4 @@
-import Button from "./button_temp";
+import Button from "./button";
 
 const components = {
   Button,

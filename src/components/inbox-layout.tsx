@@ -2,7 +2,7 @@ import { useMedia, useShortcuts } from "@/hooks";
 import { Box, Container, Stack } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import InboxInput from "./inbox-input";
-import Nav from "./nav_temp";
+import Nav from "./nav";
 
 const InboxList = dynamic(() => import("@/components/inbox-list"), {
   ssr: false,
