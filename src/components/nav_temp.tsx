@@ -1,6 +1,6 @@
 import { Flex, Heading } from "@chakra-ui/react";
 import { memo } from "react";
-import UndoMenu from "./UndoMenu";
+import UndoMenu from "./undo-menu";
 
 const Nav = () => {
   return (

@@ -1,5 +1,5 @@
 import { useHotkeys } from "react-hotkeys-hook";
-import { useActions } from "./useActions";
+import { useActions } from "./use-actions";
 
 export const useShortcuts = () => {
   const { handleUndo, handleRedo } = useActions();

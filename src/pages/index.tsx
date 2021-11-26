@@ -1,4 +1,4 @@
-import InboxLayout from "@/components/InboxLayout";
+import InboxLayout from "@/components/inbox-layout";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {

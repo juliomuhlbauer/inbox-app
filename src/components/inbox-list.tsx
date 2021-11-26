@@ -2,7 +2,7 @@ import { useList } from "@/lib";
 import { Flex } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { FC, memo, useEffect } from "react";
-import ListItem from "./ListItem";
+import ListItem from "./list-item";
 
 const InboxList: FC = () => {
   const list = useList((state) => state.list);

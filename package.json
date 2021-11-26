@@ -11,15 +11,14 @@
     "postinstall": "yarn run gen:theme-typings"
   },
   "dependencies": {
-    "@chakra-ui/cli": "^1.5.0",
     "@chakra-ui/icons": "^1.0.15",
-    "@chakra-ui/react": "^1.6.7",
+    "@chakra-ui/react": "^1.7.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@fontsource/inter": "^4.5.0",
     "framer-motion": "^4",
     "immer": "^9.0.6",
-    "next": "11.1.0",
+    "next": "12.0.0",
     "next-pwa": "^5.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -28,9 +27,10 @@
     "zustand": "^3.5.10"
   },
   "devDependencies": {
+    "@chakra-ui/cli": "^1",
     "@types/react": "17.0.20",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.0",
-    "typescript": "4.3.5"
+    "eslint-config-next": "12.0.0",
+    "typescript": "4.4.4"
   }
 }
