@@ -32,7 +32,7 @@ export const globalStyles: Styles = {
     },
     _selection: {
       color: "white",
-      background: "color.500",
+      background: "primary.500",
     },
     ...scrollbar(props),
     ...nProgress,
@@ -50,7 +50,7 @@ const scrollbar: SystemStyleFunction = (props) => ({
       bgColor: mode("gray.400", "gray.700")(props),
     },
     "::-webkit-scrollbar-thumb:hover": {
-      background: mode("color.500", "color.400")(props),
+      background: mode("primary.500", "primary.400")(props),
     },
     "::-webkit-scrollbar-corner": {
       bg: "transparent",
@@ -63,7 +63,7 @@ const nProgress: SystemStyleObject = {
     pointerEvents: "none",
   },
   "#nprogress .bar": {
-    background: "color.200",
+    background: "primary.200",
     position: "fixed",
     zIndex: "2000",
     top: 0,

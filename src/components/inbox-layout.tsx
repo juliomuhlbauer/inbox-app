@@ -41,7 +41,7 @@ const InboxLayout = () => {
                 backgroundColor: "gray.700",
               },
               "&::-webkit-scrollbar-thumb:hover": {
-                background: "color.400",
+                background: "primary.400",
               },
             },
           }}

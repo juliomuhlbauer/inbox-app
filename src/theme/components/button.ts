@@ -1,11 +1,7 @@
 import { ComponentSingleStyleConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
-import { ringStyle } from "../styles";
 
 const Button: ComponentSingleStyleConfig = {
-  baseStyle: {
-    ...ringStyle,
-  },
   variants: {
     float: (props) => ({
       color: mode("gray.600", "gray.500")(props),

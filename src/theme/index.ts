@@ -15,7 +15,7 @@ const fonts = {
 
 const colors = {
   bg: base.colors.gray,
-  color: base.colors.cyan,
+  primary: base.colors.cyan,
 };
 
 const theme = extendTheme({
@@ -24,6 +24,9 @@ const theme = extendTheme({
   colors,
   components,
   styles: globalStyles,
+  shadows: {
+    outline: `0 0 0 1px ${colors.primary[200]}`,
+  },
 });
 
 export default theme;
