@@ -6,10 +6,10 @@ import { persist } from "zustand/middleware";
 
 interface ListStore extends UndoState {
   list: ListProps[];
-  lastItemId: null | string;
   addItem: (title: string) => void;
+  addMultiple: (titles: string[]) => void;
   deleteItem: (id: string) => void;
-  resetLastItemId: () => void;
+  clean: () => void;
 }
 
 const immer =
@@ -32,7 +32,6 @@ export const useList = create<ListStore>(
     undoMiddleware(
       immer((set) => ({
         list: [],
-        lastItemId: null,
         addItem: (title) => {
           const id = Math.random().toString();
           set((state) => {
@@ -40,7 +39,24 @@ export const useList = create<ListStore>(
               id,
               title,
             });
-            state.lastItemId = id;
+          });
+          document.getElementById("bottom-focus")?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+          });
+        },
+        addMultiple: (titles) => {
+          titles.forEach((title) => {
+            set((state) => {
+              state.list.push({
+                id: Math.random().toString(),
+                title,
+              });
+            });
+          });
+          document.getElementById("bottom-focus")?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
           });
         },
         deleteItem: (id) =>
@@ -50,10 +66,11 @@ export const useList = create<ListStore>(
               1
             );
           }),
-        resetLastItemId: () =>
+        clean: () => {
           set((state) => {
-            state.lastItemId = null;
-          }),
+            state.list = [];
+          });
+        },
       }))
     ),
     {

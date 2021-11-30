@@ -2,7 +2,35 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { useActions } from "./use-actions";
 
 export const useShortcuts = () => {
-  const { handleUndo, handleRedo } = useActions();
+  const { handleUndo, handleRedo, handleClean, copyToClipboard, pasteList } =
+    useActions();
+
+  const copy = useHotkeys(
+    "ctrl+c",
+    (e) => {
+      e.preventDefault();
+      copyToClipboard();
+    },
+    [copyToClipboard]
+  );
+
+  const paste = useHotkeys(
+    "ctrl+v",
+    (e) => {
+      e.preventDefault();
+      pasteList();
+    },
+    [pasteList]
+  );
+
+  const clean = useHotkeys(
+    "ctrl+delete",
+    (e) => {
+      e.preventDefault();
+      handleClean();
+    },
+    [handleClean]
+  );
 
   const undo = useHotkeys(
     "ctrl+z",
@@ -28,8 +56,11 @@ export const useShortcuts = () => {
   });
 
   return {
+    clean,
     undo,
     redo,
     inputFocus,
+    copy,
+    paste,
   };
 };
