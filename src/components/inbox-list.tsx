@@ -10,7 +10,7 @@ const InboxList: FC = () => {
   useEffect(() => {
     document.getElementById("bottom-focus")?.scrollIntoView({
       behavior: "smooth",
-      block: "end",
+      block: "center",
     });
   }, []);
 
@@ -21,7 +21,7 @@ const InboxList: FC = () => {
           <ListItem key={item.id} item={item} />
         ))}
       </AnimatePresence>
-      <Box id="bottom-focus" h="md" />
+      <Box id="bottom-focus" h="20" />
     </Flex>
   );
 };
