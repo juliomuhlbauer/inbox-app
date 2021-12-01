@@ -9,6 +9,7 @@ import {
   IconButton,
   Spacer,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import { motion, useIsPresent } from "framer-motion";
 import { FC, memo } from "react";
@@ -26,8 +27,21 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
 
   const { isDesktop } = useMedia();
 
+  const toast = useToast();
+
   return (
-    <Box id={`item-${item.id}`} position="relative">
+    <Box
+      id={`item-${item.id}`}
+      position="relative"
+      onClick={() => {
+        navigator.clipboard.writeText(item.title);
+        toast({
+          title: "Copied to clipboard",
+          status: "success",
+          duration: 3000,
+        });
+      }}
+    >
       <motion.div
         layout
         style={{
@@ -72,7 +86,10 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
             size="sm"
             aria-label="Delete item"
             icon={<CloseIcon />}
-            onClick={() => deleteItem(item.id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteItem(item.id);
+            }}
             variant="float"
             display={isDesktop ? "none" : "block"}
             _groupHover={{ display: "block" }}
