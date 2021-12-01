@@ -21,7 +21,7 @@ const InboxList: FC = () => {
           <ListItem key={item.id} item={item} />
         ))}
       </AnimatePresence>
-      <Box id="bottom-focus" />
+      <Box id="bottom-focus" h="md" />
     </Flex>
   );
 };
