@@ -7,20 +7,25 @@ import {
   InputGroup,
   InputRightElement,
   Tooltip,
+  useToast,
 } from "@chakra-ui/react";
-import { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 
 const InputComponent = () => {
   const addItem = useList((state) => state.addItem);
+  const addMultiple = useList((state) => state.addMultiple);
+
+  const toast = useToast();
 
   const { isDesktop } = useMedia();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const [inputText, setInputText] = useState("");
+
   const addHandler = () => {
-    const value = inputRef.current?.value;
-    addItem(value || "");
-    inputRef.current && (inputRef.current.value = "");
+    addItem(inputText);
+    setInputText("");
   };
 
   useEffect(() => {
@@ -31,6 +36,23 @@ const InputComponent = () => {
     <InputGroup>
       <Input
         ref={inputRef}
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+        onPaste={(e) => {
+          e.preventDefault();
+
+          const text = e.clipboardData.getData("text/plain");
+          const items = text
+            .split("\n")
+            .map((item) => item.replace("- ", "").trim());
+          addMultiple(items);
+
+          toast({
+            title: "Pasted",
+            status: "success",
+            duration: 3000,
+          });
+        }}
         autoComplete="off"
         id="input"
         _placeholder={{
@@ -45,7 +67,7 @@ const InputComponent = () => {
           const target = e.target as HTMLInputElement;
           if (e.key === "Enter") {
             addItem(target.value);
-            target.value = "";
+            setInputText("");
           } else if (e.key === "Escape") {
             target.blur();
           }

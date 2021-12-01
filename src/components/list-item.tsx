@@ -30,18 +30,7 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
   const toast = useToast();
 
   return (
-    <Box
-      id={`item-${item.id}`}
-      position="relative"
-      onClick={() => {
-        navigator.clipboard.writeText(item.title);
-        toast({
-          title: "Copied to clipboard",
-          status: "success",
-          duration: 3000,
-        });
-      }}
-    >
+    <Box id={`item-${item.id}`} position="relative">
       <motion.div
         layout
         style={{
@@ -77,6 +66,14 @@ const ListItem: FC<ListItemProps> = ({ item }) => {
           cursor="pointer"
           _hover={{ bgColor: hoverBgColor }}
           role="group"
+          onClick={() => {
+            navigator.clipboard.writeText(item.title);
+            toast({
+              title: "Copied to clipboard",
+              status: "success",
+              duration: 3000,
+            });
+          }}
         >
           <Heading size="md" fontWeight="semibold">
             {item.title}
