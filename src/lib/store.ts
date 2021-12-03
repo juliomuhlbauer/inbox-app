@@ -33,11 +33,12 @@ export const useList = create<ListStore>(
       immer((set) => ({
         list: [],
         addItem: (title) => {
-          const id = Math.random().toString();
+          const id = Math.floor(Math.random() * 100000000).toString();
           set((state) => {
             state.list.push({
               id,
               title,
+              created_at: new Date(),
             });
           });
           document.getElementById("bottom-focus")?.scrollIntoView({
@@ -49,8 +50,9 @@ export const useList = create<ListStore>(
           titles.forEach((title) => {
             set((state) => {
               state.list.push({
-                id: Math.random().toString(),
+                id: Math.floor(Math.random() * 100000000).toString(),
                 title,
+                created_at: new Date(),
               });
             });
           });
